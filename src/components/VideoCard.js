@@ -25,4 +25,12 @@ const VideoCard = ({ videoInfo }) => {
   );
 };
 
+// const fitToViewPort = (VideoCard) => {
+//   return (
+//     <div className=" mx-5 ">
+//       <VideoCard/>
+//     </div>
+//   )
+// }
+
 export default VideoCard;
