@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSearchInput, toggleMenu } from "../utils/appSlice";
-import SearchSuggestion from "./SearchSuggestion";
+import SearchSuggest from "./SearchSuggest";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -18,7 +18,7 @@ const Header = () => {
   };
 
   return (
-    <div className=" flex justify-between my-2 p-1 px-1 border-b">
+    <div className=" flex justify-between my-2 p-1 px-1 ">
       <div className=" flex ">
         <img
           onClick={() => handleToggleMenu()}
@@ -50,7 +50,7 @@ const Header = () => {
         </div>
         {showSuggestion && (
           <div className=" absolute">
-            <SearchSuggestion searchQuery={searchQuery} />
+            <SearchSuggest searchQuery={searchQuery} />
           </div>
         )}
       </div>
