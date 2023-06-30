@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
 const RelatedVideos = () => {
   return (
-	<div>RelatedVideos</div>
-  )
-}
+    <div className=" font-semibold text-xl">RelatedVideos of this video</div>
+  );
+};
 
-export default RelatedVideos
+export default RelatedVideos;
