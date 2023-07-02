@@ -9,32 +9,39 @@ const list = [
     text: "Home",
     icon: "H",
     action: "",
-    display: "fixed"
+    display: "fixed",
   },
   {
     text: "Library",
     icon: "H",
     action: "",
-    display: "fixed"
+    display: "fixed",
   },
   {
     text: "Items",
     icon: "H",
     action: "",
     display: "fixed",
-    divider: true
+    divider: true,
   },
-]
+];
 
 const SideBar = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
-  return !isMenuOpen? null : (
-    <div className=" mx-2 px-2 border ">
-      {
-        list.map( (items)=> (
-          <MenuItem text={items.text} icon={items.icon} action={items.action}/>
-        ))
-      }
+  return !isMenuOpen ? null : (
+    <div className=" h-full ">
+    <div className=" flex flex-col px-5 z-10">
+      {list.map((items) => {
+        return (
+          <>
+          <MenuItem text={items.text} icon={items.icon} action={items.action} />
+          {
+            items.divider && (<hr className=" my-5 border-gray-200"/>)
+          }
+          </>
+        );
+      })}
+    </div>
     </div>
   );
 };
