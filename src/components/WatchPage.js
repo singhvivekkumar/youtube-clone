@@ -17,12 +17,12 @@ const WatchPage = () => {
     getRelatedVideos();
   }, []);
 
-  const getRelatedVideos = async (id) => { 
+  const getRelatedVideos = async (id) => {
     const response = await fetch();
     const jsonData = await response.json();
-    console.log(jsonData)
+    console.log(jsonData);
     // setRelatedVideos(jsonData)
-   }
+  };
 
   return (
     <div className="flex justify-center flex-row w-full">
@@ -53,16 +53,11 @@ const WatchPage = () => {
         <LiveChat />
         <RelatedVideos />
         <div className="flex flex-col py-6 px-4 overflow-y-auto lg:w-[350px] xl:w-[400px]">
-                    {relatedVideos?.contents?.map((item, index) => {
-                        if (item?.type !== "video") return false;
-                        return (
-                            <RelatedVideos
-                                key={index}
-                                video={item?.video}
-                            />
-                        );
-                    })}
-                </div>
+          {relatedVideos?.contents?.map((item, index) => {
+            if (item?.type !== "video") return false;
+            return <RelatedVideos key={index} video={item?.video} />;
+          })}
+        </div>
       </div>
     </div>
   );
