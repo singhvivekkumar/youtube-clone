@@ -31,14 +31,14 @@ const SideBar = () => {
   return !isMenuOpen ? null : (
     <div className=" h-full ">
     <div className=" flex flex-col px-5 z-10">
-      {list.map((items) => {
+      {list.map((items, index) => {
         return (
-          <>
+          <div key={index}>
           <MenuItem text={items.text} icon={items.icon} action={items.action} />
           {
             items.divider && (<hr className=" my-5 border-gray-200"/>)
           }
-          </>
+          </div>
         );
       })}
     </div>

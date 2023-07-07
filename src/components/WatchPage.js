@@ -14,7 +14,7 @@ const WatchPage = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(closeMenu());
-    getRelatedVideos();
+    // getRelatedVideos();
   }, []);
 
   const getRelatedVideos = async (id) => {

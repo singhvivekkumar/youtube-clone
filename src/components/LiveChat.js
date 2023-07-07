@@ -9,7 +9,7 @@ const LiveChat = () => {
 
   useEffect(() => {
     const messageInterval = setInterval(() => {
-      console.log("set Interval start");
+      // console.log("set Interval start");
       dispatch(
         addMessage({
           name: "Kishan Nayak",
