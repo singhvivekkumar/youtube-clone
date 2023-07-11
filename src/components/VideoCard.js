@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { YOUTUBE_CHANNEL_DETAILS_API } from "../constant";
 import { abbreviateNumber } from "js-abbreviation-number";
+import { useDispatch } from "react-redux";
+import store from "../utils/store";
+import { setChannelId } from "../utils/channelSlice";
 
 const PublishedTimeOfVideo = (publishedAt) => {
 	const publishedDate = new Date(publishedAt);
@@ -30,9 +33,11 @@ const PublishedTimeOfVideo = (publishedAt) => {
 const VideoCard = ({ videoInfo }) => {
 	const [channelDetails, setChannelDetails] = useState();
 
-	console.log(videoInfo);
+	// console.log(videoInfo);
 	const { snippet, statistics } = videoInfo;
 	const { channelTitle, channelId, title, thumbnails } = snippet;
+
+	const dispatch = useDispatch();
 
 	// promise is empty object promise =undefined promise= { promisestate:"pending", promiseresult: undefined}
 	// promise is empty object promise= { promisestate:"fulfill", promiseresult: {data}}
@@ -49,14 +54,15 @@ const VideoCard = ({ videoInfo }) => {
 	};
 
 	return (
-		<div className=" flex flex-col m-3 w-80">
+		<div className=" flex flex-col m-2 w-[312px]">
 			{/* image seciton */}
 			<div>
 				<Link to={"/watch?v=" + videoInfo.id}>
 					<img
 						className=" rounded-md"
 						alt="thumbnails"
-						src={thumbnails.medium.url}
+						src={thumbnails?.medium?.url}
+						onClick={()=> dispatch(setChannelId(channelId))}
 					/>
 				</Link>
 			</div>
@@ -68,10 +74,7 @@ const VideoCard = ({ videoInfo }) => {
 						<img
 							alt="avatar"
 							className="h-full w-full object-cover"
-							src={
-								channelDetails?.snippet?.thumbnails?.default
-									?.url
-							}
+							src={channelDetails?.snippet?.thumbnails?.default?.url}
 						/>
 					</div>
 				</div>
@@ -96,7 +99,7 @@ const VideoCard = ({ videoInfo }) => {
 								snippet?.publishedAt.match(
 									/[0-9]+-[0-9]+-[0-9]+/
 								)
-							)}{" "}
+							)}
 						</span>
 					</div>
 				</div>
