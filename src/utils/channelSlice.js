@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const channelSlice = createSlice({
 	name: "channel",
 	initialState: {
-		channelId: {},
+		channelId: "",
+
+
 	},
 	reducers: {
 		setChannelId: (state, action) => {

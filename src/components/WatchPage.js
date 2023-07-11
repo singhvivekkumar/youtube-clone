@@ -5,22 +5,32 @@ import { useSearchParams } from "react-router-dom";
 import CommentContainer from "./CommentContainer";
 import LiveChat from "./LiveChat";
 import RelatedVideos from "./RelatedVideos";
-import { YOUTUBE_CHANNEL_DETAILS_API, YOUTUBE_VIDEO_DETAILS_API } from "../constant";
+import {
+	YOUTUBE_CHANNEL_DETAILS_API,
+	YOUTUBE_VIDEO_DETAILS_API,
+} from "../constant";
 import store from "../utils/store";
 import { abbreviateNumber } from "js-abbreviation-number";
 import { BsBellFill } from "react-icons/bs";
-import { BiLike, BiDislike } from "react-icons/bi";
-
+import {
+	BiLike,
+	BiDislike,
+	BiSolidDownload,
+	BiSolidBadgeDollar,
+} from "react-icons/bi";
+import { PiShareFat } from "react-icons/pi";
+import { TfiMoreAlt } from "react-icons/tfi";
+import { MdVerified } from "react-icons/md";
 
 const WatchPage = () => {
 	const [searchParams] = useSearchParams();
-	const videoId = (searchParams.get("v"));
+	const videoId = searchParams.get("v");
+
 	const [videoDetails, setVideoDetails] = useState();
-	
 	const [relatedVideos, setRelatedVideos] = useState([]);
 	const [channelDetails, setChannelDetails] = useState();
 
-	const channelId = useSelector(store=> store.channel.channelId)
+	const channelId = useSelector((store) => store.channel.channelId);
 
 	const dispatch = useDispatch();
 	useEffect(() => {
@@ -29,7 +39,6 @@ const WatchPage = () => {
 		getVideoDetails();
 		// getRelatedVideos();
 	}, []);
-
 
 	const getChannelDetails = async () => {
 		const response = await fetch(YOUTUBE_CHANNEL_DETAILS_API + channelId);
@@ -62,15 +71,14 @@ const WatchPage = () => {
 						<iframe
 							width="900"
 							height="515"
-							src={
-								"https://www.youtube.com/embed/" +videoId
-							}
+							src={"https://www.youtube.com/embed/" + videoId}
 							title="YouTube video player"
 							frameBorder="0"
 							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 							allowFullScreen></iframe>
 					</div>
 				</div>
+				{/* title section */}
 				<div>
 					<div className="text-gray-700 font-bold text-lg mt-4 line-clamp-2">
 						{videoDetails?.snippet?.title}
@@ -81,40 +89,75 @@ const WatchPage = () => {
 					<div className=" flex ">
 						{/* avatar */}
 						<div className="flex h-10 w-10 rounded-full overflow-hidden">
-							<img alt="avatar" className="h-full w-full object-cover"
-							 src={channelDetails?.snippet?.thumbnails?.default?.url}/>
+							<img
+								alt="avatar"
+								className="h-full w-full object-cover"
+								src={
+									channelDetails?.snippet?.thumbnails?.default
+										?.url
+								}
+							/>
 						</div>
 						{/* channel title */}
-						<div className=" flex flex-col ">
-							<span className=" text-sm my-1">{videoDetails?.snippet?.channelTitle}</span>
-							<span className=" text-xs ">{abbreviateNumber(channelDetails?.statistics?.subscriberCount)} subscribes</span>
+						<div className=" flex flex-col mx-2 ">
+							<span className=" text-sm font-semibold flex items-center justify-between ">
+								{videoDetails?.snippet?.channelTitle}{" "}
+								<MdVerified />
+							</span>
+							<span className=" text-xs ">
+								{abbreviateNumber(
+									channelDetails?.statistics?.subscriberCount
+								)}{" "}
+								subscribes
+							</span>
 						</div>
 						{/* subscribe button */}
-						<div>
-							<button className=" rounded-full text-lg">
-								<BsBellFill/>
-								subscribe</button>
+						<div className=" flex items-center mx-2">
+							<button className=" flex items-center rounded-full border border-black px-4">
+								<BsBellFill />
+								Subscribe
+							</button>
 						</div>
 					</div>
-					<div className="flex ">
-						<div className=" flex h-8">
+					<div className="flex items-center ">
+						{/* like button */}
+						<div className=" flex mx-2">
 							<button className=" flex items-center px-2 rounded-l-full border border-black">
-								<BiLike/>
-								{abbreviateNumber(videoDetails?.statistics?.likeCount)}
+								<BiLike />
+								{abbreviateNumber(
+									videoDetails?.statistics?.likeCount
+								)}
 							</button>
 							<button className=" flex items-center px-2 rounded-r-full border border-black">
-								<BiDislike/>
+								<BiDislike />
 							</button>
 						</div>
-						<div>
-							<span>share</span>
-							<span>download</span>
-							<span>thanks</span>
-							<span>...</span>
+						{/* remaining section of share */}
+						<div className=" flex items-center">
+							<button className="mx-2 flex items-center text-base border border-gray-600 rounded-full px-2">
+								<PiShareFat /> Share
+							</button>
+							<button className="mx-2 flex items-center text-base border border-gray-600 rounded-full px-2">
+								<BiSolidDownload />
+								Download
+							</button>
+							<button className="mx-2 flex items-center text-base border border-gray-600 rounded-full px-2">
+								<BiSolidBadgeDollar /> Thanks
+							</button>
+							<bitton className="mx-2 flex items-center text-base border border-gray-600 rounded-full px-2">
+								<TfiMoreAlt />
+							</bitton>
 						</div>
 					</div>
 				</div>
 
+				{/* discription */}
+				<div className="flex flex-col rounded-lg bg-slate-100 hover:bg-slate-300 p-2 mt-1">
+					<div>
+						<span>{abbreviateNumber(videoDetails?.statistics?.viewCount)}views</span>
+						<span>{Date(videoDetails?.snippet?.publishedAt).split("T")[0]}</span>
+					</div>
+				</div>
 				{/* nested comment below */}
 				<div>
 					<CommentContainer />
