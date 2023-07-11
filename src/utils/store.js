@@ -4,11 +4,11 @@ import searchSlice from "./searchSlice";
 import ChatSlice from "./ChatSlice";
 
 const store = configureStore({
-  reducer: {
-    app: appSlice,
-    search: searchSlice,
-    chat: ChatSlice,
-  },
+	reducer: {
+		app: appSlice,
+		search: searchSlice,
+		chat: ChatSlice,
+	},
 });
 
 export default store;
