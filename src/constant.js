@@ -11,3 +11,5 @@ export const YOUTUBE_SEARCH_SUGGESTION_API =
 export const YOUTUBE_LIVECHAT_API = `https://www.googleapis.com/youtube/v3/liveChat/messages?liveChatId=Cg0KCzZwX0pNLUk3RlVnKicKGFVDdmpnWHZCbGJRaXlkZmZaVTdtMV9hdxILNnBfSk0tSTdGVWc&part=snippet,authorDetails&maxResults=200&key=${GOOGLE_API_KEY}`;
 
 export const YOUTUBE_CHANNEL_DETAILS_API = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&key=${GOOGLE_API_KEY}&id=`;
+
+export const YOUTUBE_COMMENT_DETAILS_API = `https://youtube.googleapis.com/youtube/v3/commentsThreads?part=snippet&key=${GOOGLE_API_KEY}&id=`;

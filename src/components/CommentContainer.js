@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Comment from "./Comment";
+import { YOUTUBE_COMMENT_DETAILS_API } from "../constant";
 
 const commentData = [
 	{
@@ -98,7 +99,16 @@ const CommentsList = ({ comments }) => {
 	));
 };
 
-const CommentContainer = () => {
+const CommentContainer = ({videoId}) => {
+	useEffect(()=>{
+		getCommentList();
+	}, []);
+
+	const getCommentList = async ()=> {
+		const response = await fetch(YOUTUBE_COMMENT_DETAILS_API+ videoId);
+		const jsonData = await response.json();
+		console.log(jsonData);
+	}
 	return (
 		<div className=" mx-2 p-1 ">
 			<h1>Comment : </h1>

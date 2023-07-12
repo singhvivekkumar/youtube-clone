@@ -152,15 +152,22 @@ const WatchPage = () => {
 				</div>
 
 				{/* discription */}
-				<div className="flex flex-col rounded-lg bg-slate-100 hover:bg-slate-300 p-2 mt-1">
-					<div>
+				<div className="flex flex-col rounded-lg bg-slate-100 hover:bg-slate-300 p-2 mt-1 w-[900px]">
+					<div className=" flex items-center ">
 						<span>{abbreviateNumber(videoDetails?.statistics?.viewCount)}views</span>
-						<span>{Date(videoDetails?.snippet?.publishedAt).split("T")[0]}</span>
+						<span className=" ml-5 ">{Date(videoDetails?.snippet?.publishedAt).split("T")[0]}</span>
 					</div>
+					<div className="flex items-center">{videoDetails?.snippet?.tags.map( (item) => {
+						return (
+							<div className=" text-blue-600 mx-1">#{item}</div>
+						)
+					})}</div>
+					<div className=" text-xs mt-4 line-clamp-1">{videoDetails?.snippet?.description}</div>
 				</div>
 				{/* nested comment below */}
 				<div>
-					<CommentContainer />
+					<div>{videoDetails?.statistics?.commentCount}</div>
+					<CommentContainer videoId={videoId} />
 				</div>
 			</div>
 			{/* suggestion section */}

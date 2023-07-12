@@ -1,6 +1,6 @@
 import React from "react";
 
-const Comment = ({ commentDetails }) => {
+const Comment = ({ commentDetails }) => { 
 	const { name, text } = commentDetails;
 	return (
 		<div className=" flex my-2 p-1 bg-gray-200 rounded-lg ">
