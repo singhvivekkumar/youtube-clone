@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Comment from "./Comment";
 import { YOUTUBE_COMMENT_DETAILS_API } from "../constant";
 
@@ -89,6 +89,7 @@ const commentData = [
 ];
 
 const CommentsList = ({ comments }) => {
+	
 	return comments.map((comment) => (
 		<div key={comment.id}>
 			<Comment commentDetails={comment} />
@@ -100,6 +101,8 @@ const CommentsList = ({ comments }) => {
 };
 
 const CommentContainer = ({videoId}) => {
+
+	const [commentDetails, setCommentDetails] = useState([]);
 	useEffect(()=>{
 		getCommentList();
 	}, []);
@@ -108,12 +111,19 @@ const CommentContainer = ({videoId}) => {
 		const response = await fetch(YOUTUBE_COMMENT_DETAILS_API+ videoId);
 		const jsonData = await response.json();
 		console.log(jsonData);
+		setCommentDetails(jsonData?.items);
 	}
 	return (
-		<div className=" mx-2 p-1 ">
-			<h1>Comment : </h1>
+		!commentDetails ? null : <div className=" mx-2 p-1 w-[900px]">
 			<div className=" p-2 ">
-				<CommentsList comments={commentData} />
+				{
+					commentDetails.map( (item) => {
+						return(
+							<Comment snippet={item?.snippet?.topLevelComment?.snippet} key={item.id} />
+						)
+					})
+				}
+				{/* <Comment snippet={commentDetails[0]?.snippet?.topLevelComment?.snippet}/> */}
 			</div>
 		</div>
 	);

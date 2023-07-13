@@ -5,30 +5,8 @@ import { abbreviateNumber } from "js-abbreviation-number";
 import { useDispatch } from "react-redux";
 import store from "../utils/store";
 import { setChannelId } from "../utils/channelSlice";
+import { PublishedTimeOfVideo } from "../utils/help";
 
-const PublishedTimeOfVideo = (publishedAt) => {
-	const publishedDate = new Date(publishedAt);
-	const currentDate = new Date();
-	if (currentDate.getFullYear() - publishedDate.getFullYear()) {
-		return (
-			currentDate.getFullYear() -
-			publishedDate.getFullYear() +
-			" years ago"
-		);
-	} else {
-		if (currentDate.getMonth() - publishedDate.getMonth()) {
-			return (
-				currentDate.getMonth() -
-				publishedDate.getMonth() +
-				" months ago"
-			);
-		} else {
-			return (
-				currentDate.getDate() - publishedDate.getDate() + " days ago"
-			);
-		}
-	}
-};
 
 const VideoCard = ({ videoInfo }) => {
 	const [channelDetails, setChannelDetails] = useState();
