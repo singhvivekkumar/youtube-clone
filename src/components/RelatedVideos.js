@@ -38,7 +38,7 @@ const RelatedVideos = ({ channelId }) => {
 									<div className=" font-semibold text-sm line-clamp-2">
 										{item?.snippet?.title}
 									</div>
-									<div className=" text-slate-600 font-semibold text-xs">
+									<div className=" text-slate-700 font-semibold text-xs">
 										{item?.snippet?.channelTitle}
 									</div>
 									<div className=" text-slate-600 text-xs">

@@ -9,26 +9,8 @@ import { RiLightbulbLine, RiFeedbackLine } from "react-icons/ri";
 import { FiSettings, FiHelpCircle } from "react-icons/fi";
 
 export const NavMenuList = [
-	// {
-	// 	text: "Home",
-	// 	icon: "H",
-	// 	action: "",
-	// 	display: "fixed",
-	// },
-	// {
-	// 	text: "Library",
-	// 	icon: "H",
-	// 	action: "",
-	// 	display: "fixed",
-	// },
-	// {
-	// 	text: "Items",
-	// 	icon: "H",
-	// 	action: "",
-	// 	display: "fixed",
-	// 	divider: true,
-	// },
-	{ text: "Home", icon: <AiFillHome />, action: "", display: "fixed" },
+	
+	{ text: "Home", icon: <AiFillHome />, action: "/", display: "fixed" },
 	{ text: "Shorts", icon: <MdVideoLibrary/> , action: "", display: "fixed" },
 	{
 		text: "Trending",

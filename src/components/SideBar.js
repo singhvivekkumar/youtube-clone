@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import store from "../utils/store";
 import MenuItem from "./MenuItem";
 import { NavMenuList } from "../utils/help";
+import { Link } from "react-router-dom";
 
 const SideBar = () => {
 	const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
@@ -13,11 +14,11 @@ const SideBar = () => {
 				{NavMenuList.map((items, index) => {
 					return (
 						<div key={index}>
+							<Link to={items.action}>
 							<MenuItem
 								text={items.text}
 								icon={items.icon}
-								action={items.action}
-							/>
+							/></Link>
 							{items.divider && (
 								<hr className=" my-5 border-gray-200" />
 							)}

@@ -21,6 +21,7 @@ import {
 import { PiShareFat } from "react-icons/pi";
 import { TfiMoreAlt } from "react-icons/tfi";
 import { MdVerified } from "react-icons/md";
+import ReactPlayer from "react-player";
 
 const WatchPage = () => {
 	const [searchParams] = useSearchParams();
@@ -52,21 +53,21 @@ const WatchPage = () => {
 		setVideoDetails(jsonData?.items[0]);
 	};
 
-	return  (
-		<div className="flex justify-center flex-row m-2 mx-4">
+	return !videoDetails? null :  (
+		<div className="flex justify-center flex-row m-2 mx-4 w-full">
 			{/* channel infomation n */}
 			<div className=" flex flex-col justify-center mx-2 w-[900px]">
 				{/* video sectio */}
 				<div className="flex">
 					<div className="">
-						<iframe
-							width="900"
-							height="515"
-							src={"https://www.youtube.com/embed/" + videoId}
-							title="YouTube video player"
-							frameBorder="0"
-							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-							allowFullScreen></iframe>
+						<ReactPlayer
+							url={`https://www.youtube.com/watch?v=${videoId}`}
+                            controls
+                            width="900px"
+                            height="505px"
+                            // style={{ backgroundColor: "#000000" }}
+                            playing={true}
+						/>
 					</div>
 				</div>
 				{/* title section */}

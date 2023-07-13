@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import store from "../utils/store";
 import { YOUTUBE_SEARCH_SUGGESTION_API } from "../constant";
 import { cacheResult } from "../utils/searchSlice";
+import setResult from "../utils/searchSlice"
 
 const SearchSuggest = ({ searchQuery }) => {
 	const [searchSuggestion, setSearchSuggestion] = useState([]);
@@ -50,11 +51,12 @@ const SearchSuggest = ({ searchQuery }) => {
 		<div className=" bg-white p-2 px-3 w-[500px] rounded-lg border border-gray-300 shadow-xl">
 			<ul>
 				{searchSuggestion.map((suggest) => (
-					<li
+					<div
 						key={suggest}
+						onClick={()=> dispatch(setResult(suggest))}
 						className=" p-[2px] px-5 cursor-pointer hover:bg-gray-200 rounded-lg">
 						{suggest}
-					</li>
+					</div>
 				))}
 			</ul>
 		</div>

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSearchInput, toggleMenu } from "../utils/appSlice";
 import SearchSuggest from "./SearchSuggest";
+import { Link } from "react-router-dom";
+import SearchResultVideo from "./SearchResultVideo";
 
 const Header = () => {
 	const [searchQuery, setSearchQuery] = useState("");
@@ -44,7 +46,11 @@ const Header = () => {
 						}}
 						className=" border border-gray-400 p-1 px-8 rounded-l-full w-[500px]"
 					/>
-					<button className=" border border-gray-400 p-1 px-4  rounded-r-full">
+					<button 
+						onClick={()=>(
+							<Link onClick="true" to="query"><SearchResultVideo query={searchQuery}/> </Link>
+						)}
+						className=" border border-gray-400 p-1 px-4  rounded-r-full">
 						🔍
 					</button>
 				</div>
