@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSearchInput, toggleMenu } from "../utils/appSlice";
 import SearchSuggest from "./SearchSuggest";
 import store from "../utils/store";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
 	// const [searchQuery, setSearchQuery] = useState("");
@@ -11,6 +12,7 @@ const Header = () => {
 
 	const dispatch = useDispatch();
 	// const resultQuery = useSelector( (store)=> store?.search?.resultQuery);
+	const navigate = useNavigate();
 
 	const handleToggleMenu = () => {
 		dispatch(toggleMenu());
@@ -20,6 +22,9 @@ const Header = () => {
 		dispatch(setSearchInput(text));
 	};
 
+	const searchQueryHandler = () => {
+		navigate("/search?q=" + searchInput);
+	};
 
 	return (
 		<div className=" flex justify-between my-2 p-1 px-1 ">
@@ -45,8 +50,8 @@ const Header = () => {
 						onChange={(e) => handleSearchInput(e.target.value)}
 						className=" border border-gray-400 p-1 px-8 rounded-l-full w-[500px]"
 					/>
-					<button 
-						formAction=""
+					<button
+						onClick={() => searchQueryHandler()}
 						className=" border border-gray-400 p-1 px-4  rounded-r-full">
 						🔍
 					</button>

@@ -17,4 +17,4 @@ export const YOUTUBE_COMMENT_DETAILS_API = `https://www.googleapis.com/youtube/v
 
 export const YOUTUBE_RELATED_VIDEO_LIST_API = `https://www.googleapis.com/youtube/v3/activities?part=snippet%2CcontentDetails&maxResults=50&regionCode=in&key=${GOOGLE_API_KEY}&channelId=`;
 
-export const YOUTUBE_SEARCH_VIDEO_API = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=40&key=${GOOGLE_API_KEY}&q=surfing`;
+export const YOUTUBE_SEARCH_VIDEO_API = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&key=${GOOGLE_API_KEY}&q=`;
