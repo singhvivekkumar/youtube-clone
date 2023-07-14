@@ -7,6 +7,7 @@ const RelatedVideos = ({ channelId }) => {
 	console.log("channelid" + channelId);
 
 	const [relatedVideoList, setRelatedVideoList] = useState([]);
+	let check = false;
 
 	useEffect(() => {
 		getRelatedVideos();
@@ -26,7 +27,8 @@ const RelatedVideos = ({ channelId }) => {
 			<div className="flex flex-col justify-start">
 				{/* { relatedVideoList[0].snippet.title} */}
 				{relatedVideoList.map((item) => {
-					return (
+					if (item?.kind==="youtube#activity") check = true;
+					return check && (
                         <Link key={item?.id} to={"/watch?v=" + item?.contentDetails?.upload?.videoId}>
 						    <div className=" my-1 flex hover:bg-zinc-200 p-1 rounded-lg">			
 								<img

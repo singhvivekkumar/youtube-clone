@@ -13,12 +13,15 @@ const appSlice = createSlice({
 		closeMenu: (state) => {
 			state.isMenuOpen = false;
 		},
+		openMenu: (state) => {
+			state.isMenuOpen = true;
+		},
 		setSearchInput: (state, action) => {
 			state.searchInput = action.payload;
 		},
 	},
 });
 
-export const { toggleMenu, closeMenu, setSearchInput } = appSlice.actions;
+export const { toggleMenu, closeMenu, openMenu, setSearchInput } = appSlice.actions;
 
 export default appSlice.reducer;
