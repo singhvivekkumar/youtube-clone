@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import store from "../utils/store";
 import { YOUTUBE_SEARCH_SUGGESTION_API } from "../constant";
 import { cacheResult } from "../utils/searchSlice";
-import setResult from "../utils/searchSlice"
+import { setSearchInput } from "../utils/appSlice";
 
 const SearchSuggest = ({ searchQuery }) => {
 	const [searchSuggestion, setSearchSuggestion] = useState([]);
 
-	const searchCache = useSelector((store) => store.search);
+	const searchCache = useSelector((store) => store?.search);
 
 	const dispatch = useDispatch();
 
@@ -47,18 +47,23 @@ const SearchSuggest = ({ searchQuery }) => {
 		);
 	};
 
+	const handleSearchText = (text) => {
+		dispatch(setSearchInput(text));
+		console.log(text);
+	};
+
 	return (
 		<div className=" bg-white p-2 px-3 w-[500px] rounded-lg border border-gray-300 shadow-xl">
-			<ul>
-				{searchSuggestion.map((suggest) => (
+			{searchSuggestion.map((suggest) => {
+				return (
 					<div
+						onClick={() => handleSearchText(suggest)}
 						key={suggest}
-						onClick={()=> dispatch(setResult(suggest))}
-						className=" p-[2px] px-5 cursor-pointer hover:bg-gray-200 rounded-lg">
+						className=" p-[2px] px-5 hover:bg-gray-200 rounded-lg">
 						{suggest}
 					</div>
-				))}
-			</ul>
+				);
+			})}
 		</div>
 	);
 };

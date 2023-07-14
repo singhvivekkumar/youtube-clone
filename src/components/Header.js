@@ -1,15 +1,16 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setSearchInput, toggleMenu } from "../utils/appSlice";
 import SearchSuggest from "./SearchSuggest";
-import { Link } from "react-router-dom";
-import SearchResultVideo from "./SearchResultVideo";
+import store from "../utils/store";
 
 const Header = () => {
-	const [searchQuery, setSearchQuery] = useState("");
+	// const [searchQuery, setSearchQuery] = useState("");
 	const [showSuggestion, setShowSuggestion] = useState(false);
+	const searchInput = useSelector((store) => store?.app?.searchInput);
 
 	const dispatch = useDispatch();
+	// const resultQuery = useSelector( (store)=> store?.search?.resultQuery);
 
 	const handleToggleMenu = () => {
 		dispatch(toggleMenu());
@@ -18,6 +19,7 @@ const Header = () => {
 	const handleSearchInput = (text) => {
 		dispatch(setSearchInput(text));
 	};
+
 
 	return (
 		<div className=" flex justify-between my-2 p-1 px-1 ">
@@ -39,24 +41,19 @@ const Header = () => {
 					<input
 						onFocus={() => setShowSuggestion(true)}
 						onBlur={() => setShowSuggestion(false)}
-						value={searchQuery}
-						onChange={(e) => {
-							setSearchQuery(e.target.value);
-							handleSearchInput(searchQuery);
-						}}
+						value={searchInput}
+						onChange={(e) => handleSearchInput(e.target.value)}
 						className=" border border-gray-400 p-1 px-8 rounded-l-full w-[500px]"
 					/>
 					<button 
-						onClick={()=>(
-							<Link onClick="true" to="query"><SearchResultVideo query={searchQuery}/> </Link>
-						)}
+						formAction=""
 						className=" border border-gray-400 p-1 px-4  rounded-r-full">
 						🔍
 					</button>
 				</div>
 				{showSuggestion && (
 					<div className=" absolute">
-						<SearchSuggest searchQuery={searchQuery} />
+						<SearchSuggest searchQuery={searchInput} />
 					</div>
 				)}
 			</div>
