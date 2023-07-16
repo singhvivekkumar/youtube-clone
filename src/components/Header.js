@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSearchInput, toggleMenu } from "../utils/appSlice";
 import SearchSuggest from "./SearchSuggest";
 import store from "../utils/store";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { BiMenu } from "react-icons/bi";
+
+import logo from "../images/yt-logo.png"
+import logoMobile from "../images/yt-logo-mobile.png"
 
 const Header = () => {
 	// const [searchQuery, setSearchQuery] = useState("");
@@ -27,20 +31,28 @@ const Header = () => {
 	};
 
 	return (
-		<div className=" flex justify-between my-2 p-1 px-1 ">
-			<div className=" flex ">
-				<img
+		<div className="sticky top-0 z-10 flex flex-row bg-white dark:bg-slate-800 justify-between h-14 p-2 px-4 items-center ">
+			{/* { loading && <loader/> } */}
+			{/* menu or logo */}
+			<div className=" flex h-5 items-center ">
+				<BiMenu
+					className=" text-2xl text-slate-800 dark:text-white mx-4 cursor-pointer "
 					onClick={() => handleToggleMenu()}
-					className=" h-6 mt-1 mx-4 cursor-pointer "
-					alt="menu"
-					src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAV1BMVEX///90d3lxdHZtcHJqbW/AwcHk5eWVmJlnam1rbnCpq6yBhIb5+fnHyMng4eH29veKjI6ztLWipKV5fH6OkZLZ2tvq6+vLzMy5u7zIycnR0tLCw8OanJ7n5uYQAAACyUlEQVR4nO3di27iMBCFYcfOFodbEiBAgfd/ziXQSlvJNqkWCc3h/54gR3ac1p4xzgEAAAAAAAAAAAAAAAAoa4fVH2tWQzs13vK4qJtgT1MvjsspAfsYfGWTD7F/mG+/Da9+zv8StvtywKG2On7ffD2UAn7EVz/gE8SPfMCl7Rn6LeTXm5n1KXrnZ7mAa4U5Oopr7SHMD2KrMoTXQUz/eXPQWGdG4ZBMOFeZpNdpOk8m3Akl3CUTLoQSLt40YSeUsEsm3Agl3CQTnoW+Fudkwr3QFz/zT6LMUpNZaJw71a9+tCepT5mEKoOYHUKZNzH3Fo7OChFjeiH9crQfMR5LAZ37jLbfRR8/ywGv72JneEPR192D7dKbYReb4O0JTdwV90r/0Z76zcyaTX+afDQDAAAAAAAAAAAAYDL180P1M2D5c/yV+VqMVTmgfD2NfE2UROtasXlNvjbxIFNfmm6ZkRnC/CCKVJeOMhWm+rX6+v0W+j0zMgvNG3d26fcf6veQ6vcB6/dy6/fjv8GdCiqDmL8X4w3uNtH4J790P41zg/GttnGz7cGeqfw9UU7/ri93u68tmryvLU68r23UDquzNb+4cw8AAAAAAAAAAADAdKd5V726i+nXqm6evSD5p2UfGm/xnNv7JvQTDoFXwXKpQggP2p6cu1ivqImXcsCd5QG8C+nq2S8b+wGvEdOF+jcn61P0LubXVIsraIrPBTwqzNFRyDVZvvrBnigdcK3SnFdVdbpIWGaSZqfpRWWhuS416c8+nV2GvG1nl0gvwijTj9ALraXpYuihefWDPU2TqdcX+uKnA+o0IGbaD51rVQaxzta0i6w1mXXmRuKTWPhRMueWlf2IviruKLbG257GxqdHjSUX091r/tFm4mhYRJNb3uOmd1xM+0mr9Xzb1PY023mxt/Kn5f7Dmv3kvjUAAAAAAAAAAAAAUPUXCyx+ltjBidoAAAAASUVORK5CYII="
+				/>
+				<Link to="/" className="flex h-5 items-center">
+				<img
+					className=" h-full hidden dark:md:block "
+					alt="logo"
+					src={logo}
 				/>
 				<img
-					className=" h-8 rounded-lg"
+					className=" h-full md:hidden "
 					alt="logo"
-					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBmX0x9KawlD7gHC-FGLp_bpRNh9KE1m6zmzxdf62Tt8WVEXlRkItuq6CAW1BmI-R1NQ&usqp=CAU"
+					src={logoMobile}
 				/>
+				</Link>
 			</div>
+			{/* search bar section */}
 			<div className=" relative text-lg">
 				<div>
 					<input
@@ -62,6 +74,7 @@ const Header = () => {
 					</div>
 				)}
 			</div>
+			{/* profile section */}
 			<div>
 				<img
 					className=" h-8 mx-12"

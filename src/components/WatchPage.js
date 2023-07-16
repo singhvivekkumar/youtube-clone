@@ -54,12 +54,12 @@ const WatchPage = () => {
 	};
 
 	return !videoDetails? null :  (
-		<div className="flex justify-center flex-row m-2 mx-4 w-full">
+		<div className="flex justify-center items-start flex-row m-2 mx-4 w-full">
 			{/* channel infomation n */}
 			<div className=" flex flex-col justify-center mx-2 w-[900px]">
 				{/* video sectio */}
 				<div className="flex">
-					<div className="">
+					<div className="border">
 						<ReactPlayer
 							url={`https://www.youtube.com/watch?v=${videoId}`}
                             controls
