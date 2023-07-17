@@ -5,9 +5,9 @@ import SearchSuggest from "./SearchSuggest";
 import store from "../utils/store";
 import { Link, useNavigate } from "react-router-dom";
 import { BiMenu } from "react-icons/bi";
-
-import logo from "../images/yt-logo.png"
-import logoMobile from "../images/yt-logo-mobile.png"
+import { GoSearch } from "react-icons/go";
+import logo from "../images/yt-logo.png";
+import logoMobile from "../images/yt-logo-mobile.png";
 
 const Header = () => {
 	// const [searchQuery, setSearchQuery] = useState("");
@@ -40,36 +40,43 @@ const Header = () => {
 					onClick={() => handleToggleMenu()}
 				/>
 				<Link to="/" className="flex h-5 items-center">
-				<img
-					className=" h-full hidden dark:md:block "
-					alt="logo"
-					src={logo}
-				/>
-				<img
-					className=" h-full md:hidden "
-					alt="logo"
-					src={logoMobile}
-				/>
+					<img
+						className=" h-full hidden dark:md:block "
+						alt="logo"
+						src={logo}
+					/>
+					<img
+						className=" h-full md:hidden "
+						alt="logo"
+						src={logoMobile}
+					/>
 				</Link>
 			</div>
 			{/* search bar section */}
-			<div className=" relative text-lg">
-				<div>
-					<input
-						onFocus={() => setShowSuggestion(true)}
-						onBlur={() => setShowSuggestion(false)}
-						value={searchInput}
-						onChange={(e) => handleSearchInput(e.target.value)}
-						className=" border border-gray-400 p-1 px-8 rounded-l-full w-[500px]"
-					/>
+			<div className=" relative flex flex-col justify-center ">
+				<div className="group flex items-center">
+					<div className=" flex h-10 md:h-10 md:ml-10 md:pl-5 border border-slate-700 rounded-l-3xl group-focus-within:border-blue-500 md:group-focus-within:ml-5 md:group-focus-within:pl-0 ">
+						<div className="w-10 items-center justify-center hidden group-focus-within:md:flex">
+							<GoSearch className="text-white text-xl" />
+						</div>
+						<input
+							type="text"
+                            placeholder="Search"
+							onFocus={() => setShowSuggestion(true)}
+							onBlur={() => setShowSuggestion(true)}
+							value={searchInput}
+							onChange={(e) => handleSearchInput(e.target.value)}
+							className=" bg-transparent outline-none text-white px-5 md:pl-0 w-44 md:group-focus-within:pl-0 md:w-64 lg:w-[500px] "
+						/>
+					</div>
 					<button
 						onClick={() => searchQueryHandler()}
-						className=" border border-gray-400 p-1 px-4  rounded-r-full">
-						🔍
+						className="w-[40px] md:w-[60px] h-8 md:h-10 flex items-center justify-center border border-l-0 border-slate-700 rounded-r-3xl bg-white/[0.1]">
+						<GoSearch className="text-white text-xl" />
 					</button>
 				</div>
 				{showSuggestion && (
-					<div className=" absolute">
+					<div className=" absolute top-10 ">
 						<SearchSuggest searchQuery={searchInput} />
 					</div>
 				)}
