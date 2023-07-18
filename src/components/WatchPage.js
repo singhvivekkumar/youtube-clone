@@ -55,7 +55,7 @@ const WatchPage = () => {
 
 	return !videoDetails? null :  (
 		<div className="flex justify-center items-start flex-row m-2 mx-4 w-full">
-			{/* channel infomation n */}
+			{/* video or  channel infomation or comment section */}
 			<div className=" flex flex-col justify-center mx-2 w-[900px]">
 				{/* video sectio */}
 				<div className="flex">
@@ -162,9 +162,10 @@ const WatchPage = () => {
 					<CommentContainer videoId={videoId} />
 				</div>
 			</div>
-			{/* suggestion section */}
+			{/* related video & live chat section */}
 			<div className=" m-1 mx-2 ">
 				{/* <LiveChat /> */}
+				{/* related video section */}
 				<RelatedVideos channelId={videoDetails?.snippet?.channelId}/>
 			</div>
 		</div>
