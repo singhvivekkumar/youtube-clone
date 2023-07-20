@@ -32,7 +32,7 @@ const VideoCard = ({ videoInfo }) => {
 	};
 
 	return (
-		<div className=" flex flex-col m-2 w-[312px]">
+		<div className=" flex flex-col w-[312px]">
 			{/* image seciton */}
 			<div>
 				<Link to={"/watch?v=" + videoInfo.id}>
@@ -58,18 +58,18 @@ const VideoCard = ({ videoInfo }) => {
 				</div>
 
 				{/* title */}
-				<div className="flex flex-col ml-3 overflow-hidden">
-					<span className="text-sm font-bold line-clamp-2">
+				<div className="flex flex-col dark:text-slate-200 ml-3 overflow-hidden">
+					<span className="text-sm font-semibold line-clamp-2">
 						{title}
 					</span>
-					<span className="text-[12px] font-semibold mt-2 text-gray-500 flex items-center">
+					<span className="text-[12px] font-semibold mt-2 text-gray-400 flex items-center">
 						{channelTitle}
 					</span>
-					<div className="flex text-[12px] font-semibold text-gray-500 truncate overflow-hidden">
+					<div className="flex text-[12px] font-semibold text-gray-400 truncate overflow-hidden">
 						<span>
 							{abbreviateNumber(statistics?.viewCount)} views
 						</span>
-						<span className="flex text-[24px] leading-none font-bold text-gray-500 relative top-[-10px] mx-1">
+						<span className="flex text-[24px] leading-none font-bold text-gray-400 relative top-[-10px] mx-1">
 							.
 						</span>
 						<span className="truncate">

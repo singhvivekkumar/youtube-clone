@@ -16,7 +16,7 @@ const VideoContainer = () => {
 		setVideos(jsonData?.items);
 	};
 	return !videos? null: (
-		<div className=" flex flex-wrap justify-evenly">
+		<div className=" flex flex-wrap justify-evenly h-full overflow-y-auto  gap-2">
 			{videos.map((item) => (
 				<VideoCard videoInfo={item} key={item?.id} />
 			))}

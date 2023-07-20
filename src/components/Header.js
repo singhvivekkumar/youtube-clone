@@ -31,7 +31,7 @@ const Header = () => {
 	};
 
 	return (
-		<div className="sticky top-0 z-10 flex flex-row bg-white dark:bg-slate-800 justify-between h-14 p-2 px-4 items-center ">
+		<div className="sticky top-0 z-10 flex flex-row bg-white dark:bg-slate-800 justify-between h-14 p-2 px-4 items-center border-b-[1px] border-slate-700 shadow-sm shadow-slate-900">
 			{/* { loading && <loader/> } */}
 			{/* menu or logo */}
 			<div className=" flex h-5 items-center ">
