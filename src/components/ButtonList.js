@@ -1,15 +1,14 @@
 import React from "react";
 import Button from "./Button";
 
+const listItem = ["Popular", "New", "world affairs", "wifi studes"];
+
 const ButtonList = () => {
 	return (
-		<div className=" flex ">
-			<Button name="All" />
-			<Button name="Live" />
-			<Button name="Home" />
-			<Button name="World" />
-			<Button name="wifi wifi" />
-			<Button name="World" />
+		<div className="flex flex-row md:gap-x-3 gap-x-1 h-10 md:pl-10">
+			{
+				listItem.map( (item, index)=> (<Button key={index} name={item} />))
+			}
 		</div>
 	);
 };
