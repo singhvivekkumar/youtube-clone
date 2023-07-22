@@ -9,8 +9,8 @@ import { Link } from "react-router-dom";
 const SideBar = () => {
 	const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 	return !isMenuOpen ? null : (
-		<div className=" h-full ">
-			<div className=" flex flex-col px-5 z-10">
+		<div className=" h-full dark:bg-slate-800 dark:text-slate-100 ">
+			<div className=" flex flex-col px-5 z-10 overflow-y-auto">
 				{NavMenuList.map((items, index) => {
 					return (
 						<div key={index}>

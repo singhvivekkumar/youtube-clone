@@ -31,12 +31,12 @@ const Header = () => {
 	};
 
 	return (
-		<div className="sticky top-0 z-10 flex flex-row bg-white dark:bg-slate-800 justify-between h-14 p-2 px-4 items-center border-b-[1px] border-slate-700 shadow-sm shadow-slate-900">
+		<div className="sticky top-0 z-10 flex flex-row bg-white dark:bg-slate-800 justify-between h-14 p-2 px-4 items-center border-b-[1px] border-slate-700 ">
 			{/* { loading && <loader/> } */}
 			{/* menu or logo */}
 			<div className=" flex h-5 items-center ">
 				<BiMenu
-					className=" text-2xl text-slate-800 dark:text-white mx-4 cursor-pointer "
+					className=" hidden md:block text-2xl text-slate-800 dark:text-white mx-4 cursor-pointer "
 					onClick={() => handleToggleMenu()}
 				/>
 				<Link to="/" className="flex h-5 items-center">
@@ -46,7 +46,7 @@ const Header = () => {
 						src={logo}
 					/>
 					<img
-						className=" h-full md:hidden "
+						className=" h-full rounded-lg md:hidden "
 						alt="logo"
 						src={logoMobile}
 					/>
@@ -55,7 +55,7 @@ const Header = () => {
 			{/* search bar section */}
 			<div className=" relative flex flex-col justify-center ">
 				<div className="group flex items-center">
-					<div className=" flex h-10 md:h-10 md:ml-10 md:pl-5 border border-slate-700 rounded-l-3xl group-focus-within:border-blue-500 md:group-focus-within:ml-5 md:group-focus-within:pl-0 ">
+					<div className=" flex h-10 md:h-8 md:ml-10 md:pl-5 border border-slate-700 rounded-l-3xl group-focus-within:border-blue-500 md:group-focus-within:ml-5 md:group-focus-within:pl-0 ">
 						<div className="w-10 items-center justify-center hidden group-focus-within:md:flex">
 							<GoSearch className="text-white text-xl" />
 						</div>
