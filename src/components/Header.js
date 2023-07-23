@@ -4,7 +4,7 @@ import { setSearchInput, toggleMenu } from "../utils/appSlice";
 import SearchSuggest from "./SearchSuggest";
 import store from "../utils/store";
 import { Link, useNavigate } from "react-router-dom";
-import { BiMenu } from "react-icons/bi";
+import { BiMenu, BiUserCircle } from "react-icons/bi";
 import { GoSearch } from "react-icons/go";
 import logo from "../images/yt-logo.png";
 import logoMobile from "../images/yt-logo-mobile.png";
@@ -55,7 +55,7 @@ const Header = () => {
 			{/* search bar section */}
 			<div className=" relative flex flex-col justify-center ">
 				<div className="group flex items-center">
-					<div className=" flex h-10 md:h-8 md:ml-10 md:pl-5 border border-slate-700 rounded-l-3xl group-focus-within:border-blue-500 md:group-focus-within:ml-5 md:group-focus-within:pl-0 ">
+					<div className=" flex h-8 md:h-10 md:ml-10 md:pl-5 border border-slate-700 rounded-l-3xl group-focus-within:border-blue-500 md:group-focus-within:ml-5 md:group-focus-within:pl-0 ">
 						<div className="w-10 items-center justify-center hidden group-focus-within:md:flex">
 							<GoSearch className="text-white text-xl" />
 						</div>
@@ -82,12 +82,8 @@ const Header = () => {
 				)}
 			</div>
 			{/* profile section */}
-			<div>
-				<img
-					className=" h-8 mx-12"
-					alt="user"
-					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmEwalaRUsDXz_hi03tVaA56X2bP3ocnStKw&usqp=CAU"
-				/>
+			<div className="flex justify-start items-center text-3xl dark:text-slate-100 h-8">
+				<BiUserCircle className=""/>
 			</div>
 		</div>
 	);
