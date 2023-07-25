@@ -82,7 +82,7 @@ const Header = () => {
 				)}
 			</div>
 			{/* profile section */}
-			<div className="flex justify-start items-center text-3xl dark:text-slate-100 h-8">
+			<div className="flex justify-center items-center text-3xl dark:text-slate-100 h-8">
 				<BiUserCircle className=""/>
 			</div>
 		</div>
