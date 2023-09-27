@@ -16,12 +16,12 @@ const SearchResultVideo = () => {
 	dispatch(openMenu());
 	useEffect(() => {
 		getSearchResult();
-	}, []);
+	}, [query]);
 
 	const getSearchResult = async () => {
 		const response = await fetch(YOUTUBE_SEARCH_VIDEO_API + query);
 		const jsonData = await response.json();
-		// console.log(jsonData?.items);
+		console.log(jsonData?.items);
 		setSearchVideo(jsonData?.items);
 	};
 	return !searchVideo ? null : (
@@ -32,20 +32,20 @@ const SearchResultVideo = () => {
 				return check && (
 					<Link key={item?.videoId} to={"/watch?v=" + item?.id?.videoId} 
 					onClick={()=> dispatch(setChannelId(item?.snippet?.channelId))}>
-						<div className=" my-2 flex hover:bg-zinc-200 p-1 rounded-lg">
+						<div className=" my-2 flex hover:bg-slate-200/90 dark:hover:bg-slate-700/30 p-1 rounded-lg">
 							<img
 								alt="thumbnails"
 								className=" px-1 rounded-lg h-40"
 								src={item?.snippet?.thumbnails?.medium?.url}
 							/>
-							<div className=" flex flex-col ">
+							<div className=" flex flex-col text-slate-700 dark:text-white/90 ">
 								<div className=" font-semibold text-lg line-clamp-2">
 									{item?.snippet?.title}
 								</div>
-								<div className=" text-slate-700 font-semibold text-sm">
+								<div className=" font-semibold text-sm">
 									{item?.snippet?.channelTitle}
 								</div>
-								<div className=" text-slate-600 text-sm">
+								<div className=" text-sm">
 									{PublishedTimeOfVideo(
 										item?.snippet?.publishedAt
 									)}

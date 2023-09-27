@@ -5,10 +5,13 @@ import { YOUTUBE_SEARCH_SUGGESTION_API } from "../constant";
 import { cacheResult } from "../utils/searchSlice";
 import { setSearchInput } from "../utils/appSlice";
 import { GoSearch } from "react-icons/go";
+import { useNavigate } from "react-router-dom";
 
 const SearchSuggest = ({ searchQuery }) => {
+	console.log("result", searchQuery);
 	const [searchSuggestion, setSearchSuggestion] = useState([]);
 
+	const navigate = useNavigate();
 	const searchCache = useSelector((store) => store?.search);
 
 	const dispatch = useDispatch();
@@ -48,23 +51,22 @@ const SearchSuggest = ({ searchQuery }) => {
 		);
 	};
 
-	// const handleSearchText = (text) => {
-	// 	dispatch(setSearchInput(text));
-	// 	console.log(text);
-	// };
+	const handleSearchText = (text) => {
+		dispatch(setSearchInput(text));
+		console.log("div clicked :",text);
+	};
 
-	return (
-		<div className=" z-20 bg-white dark:bg-slate-800 md:hidden w-[500px] rounded-lg border border-gray-300 shadow-xl">
-			{searchSuggestion.map((suggest) => {
+	return searchSuggestion?.length === 0 ? null : (
+		<div className=" z-50 bg-white dark:bg-slate-800 w-[500px] rounded-lg border border-gray-300 shadow-xl p-2 ">
+			{searchSuggestion?.map((suggest, index) => {
 				return (
-					<div className=" bg-inherit">
-						<GoSearch className=" text-slate-800 " />
-						<div
-							// onClick={() => handleSearchText(suggest)}
-							key={suggest}
-							className=" p-[2px] px-5 text-white hover:bg-slate-700 rounded-lg">
+					<div key={index} className=" flex items-center hover:bg-slate-700/50 px-3 rounded-xl mt-[2px] cursor-progress ">
+						<GoSearch className="  text-slate-800 dark:text-white " />
+						<button
+							onClick={() => handleSearchText(suggest)}
+							className=" p-[2px] px-5 text-white  rounded-lg">
 							{suggest}
-						</div>
+						</button>
 					</div>
 				);
 			})}
