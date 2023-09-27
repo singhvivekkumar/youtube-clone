@@ -91,7 +91,7 @@ const commentData = [
 const CommentsList = ({ comments }) => {
 	
 	return comments.map((comment) => (
-		<div key={comment.id}>
+		<div key={comment.id} className=" ">
 			<Comment commentDetails={comment} />
 			<div className="ml-2 pl-4 border-l border-black">
 				<CommentsList comments={comment.replies} />
@@ -114,7 +114,7 @@ const CommentContainer = ({videoId}) => {
 		setCommentDetails(jsonData?.items);
 	}
 	return (
-		!commentDetails ? null : <div className=" mx-2 p-1 w-[900px]">
+		!commentDetails ? null : <div className=" mx-2 p-1 w-[900px] ">
 			<div className=" p-2 ">
 				{
 					commentDetails.map( (item) => {

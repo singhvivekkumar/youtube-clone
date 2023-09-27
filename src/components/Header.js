@@ -28,6 +28,7 @@ const Header = () => {
 
 	const searchQueryHandler = () => {
 		navigate("/search?q=" + searchInput);
+		console.log("search input ", searchInput)
 	};
 
 	return (
@@ -55,8 +56,8 @@ const Header = () => {
 			{/* search bar section */}
 			<div className=" relative flex flex-col justify-center ">
 				<div className="group flex items-center">
-					<div className=" flex h-8 md:h-10 md:ml-10 md:pl-5 border border-slate-700 rounded-l-3xl group-focus-within:border-blue-500 md:group-focus-within:ml-5 md:group-focus-within:pl-0 ">
-						<div className="w-10 items-center justify-center hidden group-focus-within:md:flex">
+					<div className=" flex h-8 md:h-9 md:ml-10 md:pl-5 border border-slate-700 rounded-l-3xl group-focus-within:border-blue-500 md:group-focus-within:ml-5 md:group-focus-within:pl-0 ">
+						<div className="w-10 items-center justify-center hidden md:group-focus-within:flex">
 							<GoSearch className="text-white text-xl" />
 						</div>
 						<input
@@ -66,20 +67,21 @@ const Header = () => {
 							onBlur={() => setShowSuggestion(true)}
 							value={searchInput}
 							onChange={(e) => handleSearchInput(e.target.value)}
-							className=" bg-transparent outline-none text-white px-5 md:pl-0 w-44 md:group-focus-within:pl-0 md:w-64 lg:w-[500px] "
+							className=" bg-transparent outline-none text-white px-5 md:pl-0 w-44 md:group-focus-within:pl-2 md:w-64 lg:w-[500px] "
 						/>
 					</div>
 					<button
 						onClick={() => searchQueryHandler()}
-						className="w-[40px] md:w-[60px] h-8 md:h-10 flex items-center justify-center border border-l-0 border-slate-700 rounded-r-3xl bg-white/[0.1]">
+						className="w-[40px] md:w-[60px] h-8 md:h-9 flex items-center justify-center border border-l-0 border-slate-700 rounded-r-3xl bg-white/[0.1]">
 						<GoSearch className="text-white text-xl" />
 					</button>
-				</div>
-				{showSuggestion && (
-					<div className=" absolute top-10 ">
+					{showSuggestion && (
+					<div className=" hidden group-focus-within:block absolute top-10 left-1/2 translate-x-[-50%] z-50 ">
 						<SearchSuggest searchQuery={searchInput} />
 					</div>
 				)}
+				</div>
+				
 			</div>
 			{/* profile section */}
 			<div className="flex justify-center items-center text-3xl dark:text-slate-100 h-8">

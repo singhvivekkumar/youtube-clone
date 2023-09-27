@@ -53,31 +53,29 @@ const WatchPage = () => {
 		setVideoDetails(jsonData?.items[0]);
 	};
 
-	return !videoDetails? null :  (
+	return !videoDetails ? null : (
 		<div className="flex justify-center items-start flex-row m-2 mx-4 w-full">
 			{/* video or  channel infomation or comment section */}
 			<div className=" flex flex-col justify-center mx-2 w-[900px]">
 				{/* video sectio */}
-				<div className="flex">
-					<div className="border">
-						<ReactPlayer
-							url={`https://www.youtube.com/watch?v=${videoId}`}
-                            controls
-                            width="900px"
-                            height="505px"
-                            // style={{ backgroundColor: "#000000" }}
-                            playing={true}
-						/>
-					</div>
+				<div className="flex shadow-sm rounded-sm shadow-slate-50 dark:shadow-slate-50/20">
+					<ReactPlayer
+						url={`https://www.youtube.com/watch?v=${videoId}`}
+						controls
+						width="900px"
+						height="505px"
+						// style={{ backgroundColor: "#000000" }}
+						playing={true}
+					/>
 				</div>
 				{/* title section */}
-				<div>
-					<div className="text-gray-700 font-bold text-lg mt-4 line-clamp-2">
+				<div className=" mb-2 ">
+					<div className="text-gray-700 dark:text-slate-50/90 font-bold text-lg mt-4 line-clamp-2">
 						{videoDetails?.snippet?.title}
 					</div>
 				</div>
 				{/* channel details */}
-				<div className="flex justify-between">
+				<div className="flex justify-between dark:text-white/95">
 					<div className=" flex ">
 						{/* avatar */}
 						<div className="flex h-10 w-10 rounded-full overflow-hidden">
@@ -105,7 +103,7 @@ const WatchPage = () => {
 						</div>
 						{/* subscribe button */}
 						<div className=" flex items-center mx-2">
-							<button className=" flex items-center rounded-full border border-black px-4">
+							<button className=" flex items-center rounded-full border dark:border-slate-100 border-black px-4">
 								<BsBellFill />
 								Subscribe
 							</button>
@@ -113,30 +111,30 @@ const WatchPage = () => {
 					</div>
 					<div className="flex items-center ">
 						{/* like button */}
-						<div className=" flex mx-2">
-							<button className=" flex items-center px-2 rounded-l-full border border-black">
+						<div className=" flex mx-2 ">
+							<button className=" flex items-center px-2 rounded-l-full border dark:border-slate-100 border-black">
 								<BiLike />
 								{abbreviateNumber(
 									videoDetails?.statistics?.likeCount
 								)}
 							</button>
-							<button className=" flex items-center px-2 rounded-r-full border border-black">
+							<button className=" flex items-center px-2 rounded-r-full border dark:border-slate-100 border-black">
 								<BiDislike />
 							</button>
 						</div>
 						{/* remaining section of share */}
 						<div className=" flex items-center">
-							<button className="mx-2 flex items-center text-base border border-gray-600 rounded-full px-2">
+							<button className="mx-2 flex items-center text-base border border-gray-600 dark:border-slate-100 rounded-full px-2">
 								<PiShareFat /> Share
 							</button>
-							<button className="mx-2 flex items-center text-base border border-gray-600 rounded-full px-2">
+							<button className="mx-2 flex items-center text-base border border-gray-600 dark:border-slate-100 rounded-full px-2">
 								<BiSolidDownload />
 								Download
 							</button>
-							<button className="mx-2 flex items-center text-base border border-gray-600 rounded-full px-2">
+							<button className="mx-2 flex items-center text-base border border-gray-600 dark:border-slate-100 rounded-full px-2">
 								<BiSolidBadgeDollar /> Thanks
 							</button>
-							<bitton className="mx-2 flex items-center text-base border border-gray-600 rounded-full px-2">
+							<bitton className="mx-2 flex items-center text-base border border-gray-600 dark:border-slate-100 rounded-full px-2">
 								<TfiMoreAlt />
 							</bitton>
 						</div>
@@ -144,21 +142,42 @@ const WatchPage = () => {
 				</div>
 
 				{/* discription */}
-				<div className="flex flex-col rounded-lg bg-slate-100 hover:bg-slate-300 p-2 mt-3 w-[900px]">
+				<div className="flex flex-col rounded-lg bg-slate-100 dark:bg-slate-700/60 dark:hover:bg-slate-700/90 hover:bg-slate-300 dark:text-slate-50/80 p-2 mt-3 w-[900px]">
 					<div className=" flex items-center ">
-						<span>{abbreviateNumber(videoDetails?.statistics?.viewCount)}views</span>
-						<span className=" ml-5 ">{videoDetails?.snippet?.publishedAt.split("T")[0]}</span>
+						<span>
+							{abbreviateNumber(
+								videoDetails?.statistics?.viewCount
+							)}
+							views
+						</span>
+						<span className=" ml-5 ">
+							{videoDetails?.snippet?.publishedAt.split("T")[0]}
+						</span>
 					</div>
-					<div className="flex flex-wrap justify-start ">{videoDetails?.snippet?.tags.map( (item,index) => {
-						return (
-							<div key={index} className=" text-blue-600 mx-1">#{item}</div>
-						)
-					})}</div>
-					<div className=" text-sm mt-4 line-clamp-2">{videoDetails?.snippet?.description}</div>
+					<div className="flex flex-wrap justify-start ">
+						{videoDetails?.snippet?.tags?.map((item, index) => {
+							return (
+								<div
+									key={index}
+									className=" text-blue-600 mx-1">
+									#{item}
+								</div>
+							);
+						})}
+					</div>
+					<div className=" text-sm mt-4 line-clamp-2">
+						{videoDetails?.snippet?.description}
+					</div>
 				</div>
+
 				{/* nested comment below */}
-				<div>
-					<div className=" p-1 mt-3">{abbreviateNumber(videoDetails?.statistics?.commentCount)} comments</div>
+				<div className=" dark:text-white">
+					<div className=" p-1 mt-3">
+						{abbreviateNumber(
+							videoDetails?.statistics?.commentCount
+						)}{" "}
+						comments
+					</div>
 					<CommentContainer videoId={videoId} />
 				</div>
 			</div>
@@ -166,7 +185,7 @@ const WatchPage = () => {
 			<div className=" m-1 mx-2 ">
 				{/* <LiveChat /> */}
 				{/* related video section */}
-				<RelatedVideos channelId={videoDetails?.snippet?.channelId}/>
+				<RelatedVideos channelId={videoDetails?.snippet?.channelId} />
 			</div>
 		</div>
 	);
