@@ -55,10 +55,12 @@ const WatchPage = () => {
 
 	return !videoDetails ? null : (
 		<div className="flex justify-center items-start flex-row m-2 mx-4 w-full">
+
 			{/* video or  channel infomation or comment section */}
 			<div className=" flex flex-col justify-center mx-2 w-[900px]">
+
 				{/* video sectio */}
-				<div className="flex shadow-sm rounded-sm shadow-slate-50 dark:shadow-slate-50/20">
+				<div className="flex shadow-sm rounded-xl shadow-slate-50 dark:shadow-slate-50/20">
 					<ReactPlayer
 						url={`https://www.youtube.com/watch?v=${videoId}`}
 						controls
@@ -68,12 +70,14 @@ const WatchPage = () => {
 						playing={true}
 					/>
 				</div>
+
 				{/* title section */}
 				<div className=" mb-2 ">
 					<div className="text-gray-700 dark:text-slate-50/90 font-bold text-lg mt-4 line-clamp-2">
 						{videoDetails?.snippet?.title}
 					</div>
 				</div>
+
 				{/* channel details */}
 				<div className="flex justify-between dark:text-white/95">
 					<div className=" flex ">
@@ -180,10 +184,13 @@ const WatchPage = () => {
 					</div>
 					<CommentContainer videoId={videoId} />
 				</div>
+
 			</div>
+
 			{/* related video & live chat section */}
 			<div className=" m-1 mx-2 ">
 				{/* <LiveChat /> */}
+
 				{/* related video section */}
 				<RelatedVideos channelId={videoDetails?.snippet?.channelId} />
 			</div>
