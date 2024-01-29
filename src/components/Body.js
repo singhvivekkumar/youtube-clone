@@ -16,10 +16,10 @@ const Body = () => {
 		return <Network/>
 	} 
 	return (
-		<div className="flex dark:bg-slate-800 ">
+		<main className=" w-full h-full flex dark:bg-slate-800 ">
 			<SideBar />
 			<Outlet />
-		</div> 
+		</main> 
 	);
 };
 

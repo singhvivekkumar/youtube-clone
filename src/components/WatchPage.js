@@ -9,7 +9,6 @@ import {
 	YOUTUBE_CHANNEL_DETAILS_API,
 	YOUTUBE_VIDEO_DETAILS_API,
 } from "../constant";
-import store from "../utils/store";
 import { abbreviateNumber } from "js-abbreviation-number";
 import { BsBellFill } from "react-icons/bs";
 import {
@@ -26,17 +25,22 @@ import ReactPlayer from "react-player";
 const WatchPage = () => {
 	const [searchParams] = useSearchParams();
 	const videoId = searchParams.get("v");
-
+	
 	const [videoDetails, setVideoDetails] = useState();
 	const [channelDetails, setChannelDetails] = useState();
-
+	const [likeButton, setLikeButton] = useState();
+	
 	const channelId = useSelector((store) => store.channel.channelId);
+	
+	// const [ like, setLike] = useState();
 
 	const dispatch = useDispatch();
+
 	useEffect(() => {
 		dispatch(closeMenu());
 		getChannelDetails();
 		getVideoDetails();
+		setLikeButton(videoDetails?.statistics?.likeCount);
 	}, [videoId]);
 
 	const getChannelDetails = async () => {
@@ -52,6 +56,17 @@ const WatchPage = () => {
 		// console.log(jsonData?.items[0]);
 		setVideoDetails(jsonData?.items[0]);
 	};
+
+	let flag = true;
+
+	const handleOnClickLike = () => {
+		console.log("this is like clicked");
+		if (flag) {
+			setLikeButton( Number(videoDetails?.statistics?.likeCount) +1);
+			flag = false;
+		}
+		console.log(likeButton);
+	}
 
 	return !videoDetails ? null : (
 		<div className="flex justify-center items-start flex-row m-2 mx-4 w-full">
@@ -116,11 +131,16 @@ const WatchPage = () => {
 					<div className="flex items-center ">
 						{/* like button */}
 						<div className=" flex mx-2 ">
-							<button className=" flex items-center px-2 rounded-l-full border dark:border-slate-100 border-black">
+							<button
+								onClick={ handleOnClickLike }
+								className=" flex items-center h-6 px-2 rounded-l-full border dark:border-slate-100 border-black">
 								<BiLike />
-								{abbreviateNumber(
+								{/* {abbreviateNumber(
 									videoDetails?.statistics?.likeCount
-								)}
+								)} */}
+								{
+									likeButton || videoDetails?.statistics?.likeCount
+								}
 							</button>
 							<button className=" flex items-center px-2 rounded-r-full border dark:border-slate-100 border-black">
 								<BiDislike />
