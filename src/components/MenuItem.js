@@ -3,9 +3,9 @@ import React from "react";
 
 const MenuItem = ({ text, icon }) => {
 	return (
-		<div className=" dark:hover:text-slate-900 text-base cursor-pointer h-8 flex items-center px-4 mb-3 rounded-lg hover:bg-gray-200">
+		<div className=" text-base cursor-pointer h-11 px-5 flex items-center rounded-lg">
 			<span className="text-xl mr-5">{icon}</span>
-			<span className=" font-sans font-semibold">{text}</span>
+			<span className=" font-sans font-medium ">{text}</span>
 		</div>
 	);
 };

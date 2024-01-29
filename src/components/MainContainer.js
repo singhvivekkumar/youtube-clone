@@ -4,10 +4,10 @@ import VideoContainer from "./VideoContainer";
 
 const MainContainer = () => {
 	return (
-		<div className="flex flex-col bg-slate-800 overflow-hidden ">
+		<section className=" h-full w-full bg-slate-800 ">
 			<ButtonList />
 			<VideoContainer />
-		</div>
+		</section>
 	);
 };
 

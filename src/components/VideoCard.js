@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { YOUTUBE_CHANNEL_DETAILS_API } from "../constant";
 import { abbreviateNumber } from "js-abbreviation-number";
 import { useDispatch } from "react-redux";
-import store from "../utils/store";
 import { setChannelId } from "../utils/channelSlice";
 import { PublishedTimeOfVideo } from "../utils/help";
 
@@ -22,6 +21,7 @@ const VideoCard = ({ videoInfo }) => {
 	useEffect(() => {
 		getChannelDetails();
 		// console.log(channelDetails);
+		// eslint-disable-next-line
 	}, []);
 
 	const getChannelDetails = async () => {
@@ -32,12 +32,12 @@ const VideoCard = ({ videoInfo }) => {
 	};
 
 	return (
-		<div className=" flex flex-col w-[312px] ">
+		<div className=" flex flex-col w-96 h-full">
 			{/* image seciton */}
-			<div>
+			<div className=" w-full h-full ">
 				<Link to={"/watch?v=" + videoInfo.id}>
 					<img
-						className=" rounded-md"
+						className=" w-full h-full rounded-md"
 						alt="thumbnails"
 						src={thumbnails?.medium?.url}
 						onClick={()=> dispatch(setChannelId(channelId))}
@@ -45,9 +45,9 @@ const VideoCard = ({ videoInfo }) => {
 				</Link>
 			</div>
 			{/* details section */}
-			<div className="flex mt-2">
+			<div className=" h-full w-full flex mt-2">
 				{/* avatar */}
-				<div className="flex items-start pt-1">
+				<div className=" flex items-start pt-1">
 					<div className="flex h-9 w-9 rounded-full overflow-hidden">
 						<img
 							alt="avatar"

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSearchInput, toggleMenu } from "../utils/appSlice";
 import SearchSuggest from "./SearchSuggest";
-import store from "../utils/store";
 import { Link, useNavigate } from "react-router-dom";
 import { BiMenu, BiUserCircle } from "react-icons/bi";
 import { GoSearch } from "react-icons/go";
@@ -32,7 +31,7 @@ const Header = () => {
 	};
 
 	return (
-		<div className="sticky top-0 z-10 flex flex-row bg-white dark:bg-slate-800 justify-between h-14 p-2 px-4 items-center border-b-[1px] border-slate-700 ">
+		<header className=" h-14 w-full sticky top-0 z-10 flex flex-row bg-white dark:bg-slate-800 justify-between  p-2 px-4 items-center border-b-[1px] border-slate-700 ">
 			{/* { loading && <loader/> } */}
 			{/* menu or logo */}
 			<div className=" flex h-5 items-center ">
@@ -87,7 +86,7 @@ const Header = () => {
 			<div className="flex justify-center items-center text-3xl dark:text-slate-100 h-8">
 				<BiUserCircle className=""/>
 			</div>
-		</div>
+		</header>
 	);
 };
 
