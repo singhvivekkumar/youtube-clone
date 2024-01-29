@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import store from "../utils/store";
 import { YOUTUBE_SEARCH_SUGGESTION_API } from "../constant";
 import { cacheResult } from "../utils/searchSlice";
 import { setSearchInput } from "../utils/appSlice";
@@ -11,6 +10,7 @@ const SearchSuggest = ({ searchQuery }) => {
 	console.log("result", searchQuery);
 	const [searchSuggestion, setSearchSuggestion] = useState([]);
 
+	// eslint-disable-next-line
 	const navigate = useNavigate();
 	const searchCache = useSelector((store) => store?.search);
 
@@ -33,6 +33,7 @@ const SearchSuggest = ({ searchQuery }) => {
 		return () => {
 			clearTimeout(timer);
 		};
+		// eslint-disable-next-line
 	}, [searchQuery]);
 
 	const getSuggestionQuery = async () => {
@@ -57,10 +58,10 @@ const SearchSuggest = ({ searchQuery }) => {
 	};
 
 	return searchSuggestion?.length === 0 ? null : (
-		<div className=" z-50 bg-white dark:bg-slate-800 w-[500px] rounded-lg border border-gray-300 shadow-xl p-2 ">
+		<div className=" z-50 bg-white dark:bg-slate-800 w-[536px] rounded-lg border border-gray-300 shadow-xl py-2 ">
 			{searchSuggestion?.map((suggest, index) => {
 				return (
-					<div key={index} className=" flex items-center hover:bg-slate-700/50 px-3 rounded-xl mt-[2px] cursor-progress ">
+					<div key={index} className=" flex items-center hover:bg-slate-700/95 px-3 mt-[2px] cursor-progress ">
 						<GoSearch className="  text-slate-800 dark:text-white " />
 						<button
 							onClick={() => handleSearchText(suggest)}

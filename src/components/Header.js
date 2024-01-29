@@ -26,6 +26,7 @@ const Header = () => {
 	};
 
 	const searchQueryHandler = () => {
+		setShowSuggestion(false);
 		navigate("/search?q=" + searchInput);
 		console.log("search input ", searchInput)
 	};
@@ -36,7 +37,7 @@ const Header = () => {
 			{/* menu or logo */}
 			<div className=" flex h-5 items-center ">
 				<BiMenu
-					className=" hidden md:block text-2xl text-slate-800 dark:text-white mx-4 cursor-pointer "
+					className=" hidden md:block text-2xl text-slate-800 dark:text-white mx-3 cursor-pointer "
 					onClick={() => handleToggleMenu()}
 				/>
 				<Link to="/" className="flex h-5 items-center">
@@ -61,7 +62,7 @@ const Header = () => {
 						</div>
 						<input
 							type="text"
-                            placeholder="Search"
+              placeholder="Search"
 							onFocus={() => setShowSuggestion(true)}
 							onBlur={() => setShowSuggestion(true)}
 							value={searchInput}
@@ -75,7 +76,7 @@ const Header = () => {
 						<GoSearch className="text-white text-xl" />
 					</button>
 					{showSuggestion && (
-					<div className=" hidden group-focus-within:block absolute top-10 left-1/2 translate-x-[-50%] z-50 ">
+					<div className=" hidden group-focus-within:block absolute top-10 left-1/2 translate-x-[-54%] z-50 ">
 						<SearchSuggest searchQuery={searchInput} />
 					</div>
 				)}
