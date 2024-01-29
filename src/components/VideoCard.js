@@ -32,7 +32,7 @@ const VideoCard = ({ videoInfo }) => {
 	};
 
 	return (
-		<div className=" flex flex-col w-96 h-full">
+		<div className=" flex flex-col w-96 ">
 			{/* image seciton */}
 			<div className=" w-full h-full ">
 				<Link to={"/watch?v=" + videoInfo.id}>
