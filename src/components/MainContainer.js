@@ -3,7 +3,7 @@ import VideoContainer from "./VideoContainer";
 
 const MainContainer = () => {
 	return (
-		<section className=" h-full w-full bg-slate-800 ">
+		<section className=" w-full h-full bg-slate-800 ">
 			<VideoContainer />
 		</section>
 	);

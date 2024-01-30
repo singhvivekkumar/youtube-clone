@@ -32,12 +32,12 @@ const VideoCard = ({ videoInfo }) => {
 	};
 
 	return (
-		<div className=" flex flex-col w-96 ">
+		<div className=" flex flex-col sm:w-full md:w-72 lg:w-80 xl:w-96 sm:px-2 md:px-0">
 			{/* image seciton */}
 			<div className=" w-full h-full ">
 				<Link to={"/watch?v=" + videoInfo.id}>
 					<img
-						className=" w-full h-full rounded-md"
+						className=" w-full h-full sm:rounded-none md:rounded-md"
 						alt="thumbnails"
 						src={thumbnails?.medium?.url}
 						onClick={()=> dispatch(setChannelId(channelId))}

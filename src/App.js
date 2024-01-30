@@ -11,7 +11,7 @@ import Errorpage from "./components/Errorpage";
 
 const AppLayout = () => {
 	return (
-		<div className=" h-screen w-full">
+		<div className=" h-screen w-full p-0 m-0">
 			<Header />
 			<Outlet />
 		</div>

@@ -10,8 +10,8 @@ const SideBar = () => {
 	const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
 	return !isMenuOpen ? null : (
-		<section className=" w-1/6 h-full sticky hidden overflow-y md:block dark:bg-slate-800 dark:text-slate-100 ">
-			<div className=" w-full h-full flex flex-col z-10 px-2 pt-3">
+		<section className=" w-1/6 h-full sticky hidden md:block overflow-y-auto dark:bg-slate-800 dark:text-slate-100 ">
+			<div className=" w-full h-full flex flex-col z-10 px-2 pt-3 ">
 				{NavMenuList.map((items, index) => {
 					return (
 						<div className=" rounded-xl hover:bg-slate-700" key={index}>
